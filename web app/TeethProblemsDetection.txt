@@ -1,0 +1,16 @@
+from ._anvil_designer import Form1Template
+from anvil import *
+import anvil.server
+
+class Form1(Form1Template):
+  
+  def __init__(self, **properties):
+    # Set Form properties and Data Bindings.
+    self.init_components(**properties)
+ 
+  def file_loader_1_change(self, file, **event_args):
+     self.image_1.source = file
+    
+
+  def button_1_click(self, **event_args):
+     self.image_1.source =  anvil.server.call('detect_problems',self.image_1.source) 
